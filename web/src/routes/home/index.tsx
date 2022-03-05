@@ -3,6 +3,8 @@ import { useState } from "preact/hooks";
 import hljs from "highlight.js";
 // import "highlight.js/styles/night-owl.css";
 import "highlight.js/styles/atom-one-dark.css";
+import ChevronUp from "../../components/icons/ChevronUp";
+import ChevronDown from "../../components/icons/ChevronDown";
 
 const Home: FunctionalComponent = () => {
   const [pasteText, setPasteText] = useState<string>("");
@@ -52,43 +54,4 @@ const Home: FunctionalComponent = () => {
     </div>
   );
 };
-
-const ChevronDown = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="black"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M19 9l-7 7-7-7"
-      />
-    </svg>
-  );
-};
-
-const ChevronUp = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="black"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M5 15l7-7 7 7"
-      />
-    </svg>
-  );
-};
-
 export default Home;
