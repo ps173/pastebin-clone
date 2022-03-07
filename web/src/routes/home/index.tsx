@@ -9,6 +9,10 @@ import ChevronDown from "../../components/icons/ChevronDown";
 const Home: FunctionalComponent = () => {
   const [pasteText, setPasteText] = useState<string>("");
   const [showPreview, setShowPreview] = useState(false);
+  const saveText = async () => {
+    const data = await fetch("http://localhost:6969").then((res) => res.json());
+    console.log({ data });
+  };
   return (
     <div className="w-full mt-5">
       <div className="m-5">
@@ -46,6 +50,8 @@ const Home: FunctionalComponent = () => {
       <button
         onClick={() => {
           alert("I save Paste");
+          console.log(pasteText);
+          saveText();
         }}
         className="m-5 px-4 py-2 bg-blue-500 text-white hover:bg-blue-600"
       >
