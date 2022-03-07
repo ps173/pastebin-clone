@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/google/uuid"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -52,6 +53,10 @@ func main() {
 		fmt.Println(err)
 	}
 	app := fiber.New()
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+	}))
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		pastes := ReadAllPastes(db)

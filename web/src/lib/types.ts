@@ -1,5 +1,6 @@
 export interface Paste {
-  text: string;
+  body: string;
   author: string;
   language: null | string;
+  id?: string;
 }

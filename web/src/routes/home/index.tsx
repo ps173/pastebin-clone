@@ -9,7 +9,7 @@ import { Paste } from "../../lib/types";
 
 const Home: FunctionalComponent = () => {
   const [formData, setFormData] = useState<Paste>({
-    text: "",
+    body: "",
     author: "",
     language: "",
   });
@@ -19,7 +19,6 @@ const Home: FunctionalComponent = () => {
       [name]: value,
     });
   };
-  const [pasteText, setPasteText] = useState<string>("");
   const [showPreview, setShowPreview] = useState(false);
   const saveText = async () => {
     const data = await fetch("http://localhost:6969").then((res) => res.json());
@@ -31,8 +30,8 @@ const Home: FunctionalComponent = () => {
         <div className="">
           <textarea
             className="border-black bg-primary border w-full h-44 text-primaryGrey p-5"
-            value={formData.text}
-            name="text"
+            value={formData.body}
+            name="body"
             onChange={({ currentTarget }) =>
               handleValueChange(currentTarget.name, currentTarget.value)
             }
@@ -52,12 +51,12 @@ const Home: FunctionalComponent = () => {
               {showPreview ? <ChevronUp /> : <ChevronDown />}
             </button>
           </div>
-          {showPreview && pasteText !== "" && (
+          {showPreview && formData.body !== "" && (
             <div className="whitespace-pre hljs p-4">
               <code
                 className="w-full "
                 dangerouslySetInnerHTML={{
-                  __html: hljs.highlightAuto(pasteText).value,
+                  __html: hljs.highlightAuto(formData.body).value,
                 }}
               />
             </div>
